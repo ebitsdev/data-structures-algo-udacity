@@ -16,8 +16,6 @@ with open('calls.csv', 'r') as f:
     for record in calls:
         count1.add(record[0])
     print("There are {} different telephone numbers in the records.".format(len(count1)))
-    # print(len(count1))
-
 
 """
 TASK 1:
