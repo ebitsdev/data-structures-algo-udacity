@@ -10,8 +10,8 @@ with open('texts.csv', 'r') as f:
     reader = csv.reader(f)
     texts = list(reader)
     for text_record in texts:
-        # Get all the caller numbers
-        telemarketers.add(text_record[0])
+        # Get all the calling numbers
+        non_telemarketers.add(text_record[0])
         # Get all the receiving numbers
         non_telemarketers.add(text_record[1])
 
