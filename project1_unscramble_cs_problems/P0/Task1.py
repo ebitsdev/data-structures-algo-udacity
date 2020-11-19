@@ -9,12 +9,14 @@ with open('texts.csv', 'r') as f:
     texts = list(reader)
     for record in texts:
         count1.add(record[0])
+        count1.add(record[1])
 with open('calls.csv', 'r') as f:
     reader = csv.reader(f)
     calls = list(reader)
     count = set()
     for record in calls:
         count1.add(record[0])
+        count1.add(record[1])
     print("There are {} different telephone numbers in the records.".format(len(count1)))
 
 """

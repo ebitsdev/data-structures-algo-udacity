@@ -10,36 +10,39 @@ with open('texts.csv', 'r') as f:
 with open('calls.csv', 'r') as f:
     reader = csv.reader(f)
     calls = list(reader)
-    called_numbers = set()
-    called_fixed_numbers = set()    
+    all_fixed_calls = []
+    called_fixed_numbers = []
+    called_number_codes = set()
+
     # Iterate through called numbers in from fixed line phone numbers in Bangalore
     for record in calls:
       # Check if the numbers calling are fixed line phone numbers
       if record[0].startswith("(080)"):
+        # Get all the calls made from fixed line phone numbers in Bangalore
+        all_fixed_calls.append(record[1])
+        # Get only the fixed line phone numbers called by fixed line numbers in Bangalore
         if record[1].startswith("(080)"):          
           # Add the called fixed line numbers to the set of unique numbers
-          called_fixed_numbers.add(record[1])              
+          called_fixed_numbers.append(record[1])
         # Add all the mobile numbers that were called by fixed phone line numbers
         if record[1].startswith("7") or record[1].startswith("8") or record[1].startswith("9"):
-          called_numbers.add(record[1][:4])
+          called_number_codes.add(record[1][:4])
           # Add all the telemarketers numbers of the numbers called from a fixed phone number.
         elif record[1].startswith("140"):
-          called_numbers.add(record[1][:3])
+          called_number_codes.add(record[1][:3])
           # Otherwise all the remaining fixed line numbers called from a fixed phone number.
         else:
           # Split the telephone code by the closing parentheses and manually add it
-          called_numbers.add(record[1].split(")")[0]+")")
+          called_number_codes.add(record[1].split(")")[0]+")")
     
     print("The numbers called by people in Bangalore have codes:")
     # Iterate over the area codes of numbers that were called from a fixed phone number in Bangalore
-    
-    # called_numbers.sort(reverse=False)
-    percentage_of_calls = 100*(len(called_fixed_numbers)/len(called_numbers))
-    for number in sorted(called_numbers):
+    for number in sorted(called_number_codes):
       print(number)
-    # # Print the percentage of calls made to other fixed line phone numbers in Bangalore from fixed lines.
-    print("{0:.2f} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.".format(percentage_of_calls))
-    
+      
+    # Print the percentage of calls made to other fixed line phone numbers in Bangalore from fixed lines.
+    percentage_of_calls = 100*(len(called_fixed_numbers)/len(all_fixed_calls))
+    print("{0:.2f} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.".format(percentage_of_calls))    
 
 
 """

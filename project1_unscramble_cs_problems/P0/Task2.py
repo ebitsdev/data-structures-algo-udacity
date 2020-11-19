@@ -12,13 +12,20 @@ with open('calls.csv', 'r') as f:
     calls = list(reader)               
     phone_numbers = {}
     for i in range(len(calls)):
-        # Check if the dictionary contains the key alreadey.
-        if calls[i][0] in phone_numbers:
-            # If the key exists increment the call duration time
-            phone_numbers[calls[i][0]] += int(calls[i][3])
-        # Else add the key to the dictionary and set its value
+        # Check if the dictionary contains the receiver's number alreadey.
+        if calls[i][1] in phone_numbers:
+            # If the receiver's number exists increment the call duration time
+            phone_numbers[calls[i][1]] += int(calls[i][3])
+            # Check if the dictionary contains the caller's number alreadey.
+            if calls[i][0] in phone_numbers:
+            # If the receiver's number exists increment the call duration time
+                phone_numbers[calls[i][0]] += int(calls[i][3])
+            # Else add the caller's number to the dictionary
+            else:
+                phone_numbers[calls[i][0]] = int(calls[i][3])
+        # Else add the receiver's number
         else:
-            phone_numbers[calls[i][0]] = int(calls[i][3])
+            phone_numbers[calls[i][1]] = int(calls[i][3])
     # Find the key (phone number) with the longuest call duration.
     longest_call = max(phone_numbers, key=phone_numbers.get)
 print("{} spent the longest time, {} seconds, on the phone during September 2016.".format(longest_call, phone_numbers[longest_call]))

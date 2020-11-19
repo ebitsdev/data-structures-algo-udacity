@@ -4,19 +4,28 @@ It's ok if you don't understand how to read files.
 """
 import csv
 
+telemarketers = set()
+non_telemarketers = set()
 with open('texts.csv', 'r') as f:
     reader = csv.reader(f)
     texts = list(reader)
+    for text_record in texts:
+        # Get all the caller numbers
+        telemarketers.add(text_record[0])
+        # Get all the receiving numbers
+        non_telemarketers.add(text_record[1])
 
 with open('calls.csv', 'r') as f:
     reader = csv.reader(f)
     calls = list(reader)
-    telemarketers = set()
     for record in calls:
-        if record[0].startswith("140"):
-            telemarketers.add(record[0])
+        # Get all the caller numbers        
+        telemarketers.add(record[0])
+        # Get all the receiving numbers
+        non_telemarketers.add(record[1])
     print("These numbers could be telemarketers: ")
-    for number in sorted(telemarketers):
+    # Substract the caller numbers set and the receiving numbers set to get the difference, constituting the list of possible telemarketers
+    for number in sorted(telemarketers - non_telemarketers):
         print(number)
 
 """
