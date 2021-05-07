@@ -84,4 +84,10 @@ if __name__ == '__main__':
     our_cache.set(1, 1)
     print(our_cache.get(1))
 
+    # Test case 3
+    our_cache = LRUCache(0)
+    our_cache.set(5,1)
+    our_cache.set(3, 2)
+    print(our_cache.get(1))
+
 
