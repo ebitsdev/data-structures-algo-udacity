@@ -12,3 +12,5 @@ The repository has the following structure:
 - project2 folder with 2 subfolders:
   - explanation, which contains explanation files for the 6 problems
   - solutions folder containing the solutions to the 6 problems.
+
+  - Completed the project successfully.
