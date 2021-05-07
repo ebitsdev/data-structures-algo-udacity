@@ -84,9 +84,8 @@ myCoin2 = MyBlockChain()
 myCoin2.show_block_details()
 
 # Test case 5 block is None 
-data3 = None
 myCoin3 = MyBlockChain()
-myCoin3.chain_blocks(data3)
+myCoin3.chain_blocks(None)
 myCoin3.show_block_details()
 
 
