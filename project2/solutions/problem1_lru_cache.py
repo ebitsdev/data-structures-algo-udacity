@@ -84,7 +84,7 @@ if __name__ == '__main__':
     our_cache.set(1, 1)
     print(our_cache.get(1))
 
-    # Test case 3
+    # Test case 3 with 0 capacity
     our_cache = LRUCache(0)
     our_cache.set(5,1)
     our_cache.set(3, 2)

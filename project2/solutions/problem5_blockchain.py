@@ -38,6 +38,9 @@ class MyBlockChain:
             c_head.next = Block(data, prev_hash)
 
     def show_block_details(self):
+        if self == None:
+            print("No block to show")
+            return
         if self.head == None:
             print("No block to process")
             return
@@ -79,6 +82,12 @@ myCoin.show_block_details()
 # Test case 4 with empty block
 myCoin2 = MyBlockChain()
 myCoin2.show_block_details()
+
+# Test case 5 block is None 
+data3 = None
+myCoin3 = MyBlockChain()
+myCoin3.chain_blocks(data3)
+myCoin3.show_block_details()
 
 
 
