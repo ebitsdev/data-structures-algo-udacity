@@ -72,9 +72,15 @@ myCoin.show_block_details()
 # Test case 2
 myCoin.chain_blocks("Another block data.")
 myCoin.show_block_details()
-# Test case 3
+# Test case 3 with empty string
 myCoin.chain_blocks("")
 myCoin.show_block_details()
+
+# Test case 4 with empty block
+myCoin2 = MyBlockChain()
+myCoin2.show_block_details()
+
+
 
 
 
