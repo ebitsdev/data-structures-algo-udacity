@@ -4,4 +4,4 @@
 
 To solve this problem, we use merge sort utility function with a time complexity of O(nlog(n)).
 
-The space complexity is O(n)
+- The merge sort algorithm has a space complexity of O(n) and the rearrangement method also has a space complexity of O(n), hence the overall space complexity of the solution is O(n).

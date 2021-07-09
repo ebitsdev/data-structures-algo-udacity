@@ -25,3 +25,5 @@ print ("Pass" if  (1 == floorSqrt(1)) else "Fail")
 print ("Pass" if  (5 == floorSqrt(27)) else "Fail")
 print ("Pass" if  (6 == floorSqrt(38)) else "Fail")
 print ("Pass" if  (2 == floorSqrt(1)) else "Fail")
+print ("Pass" if  (-1 == floorSqrt(-3)) else "Fail") # Another edge case
+print ("Pass" if  (-1 == floorSqrt(0)) else "Fail") # This is an edge case
