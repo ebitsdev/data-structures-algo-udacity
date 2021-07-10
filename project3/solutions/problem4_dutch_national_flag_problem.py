@@ -1,31 +1,37 @@
 # Problem 4: Dutch National Flag Problem
 
-def sort_012(input_list):
-    # Handle edge cases
-    if input_list is None:
+def sort_zero_one_two(input_list):
+    # We define 3 variables for 0, 1, and 2
+    # We also define 1 more variable to represent the end of the array
+    lo_end = 0
+    hi_end = len(input_list) - 1
+    mid = 0
+    tmp = None
+    if len(input_list) <= 0 or input_list[mid] < 0:
         return "The list is either empty or invalid."
-    lst_0 = []
-    lst_1 = []
-    lst_2 = []
-    output = []
-    for element in input_list:
+    
+    while (mid <= hi_end):                 
         
-        if element == 0:
-            lst_0.append(0)
-        elif element == 1:
-            lst_1.append(1)
+        if input_list[mid] == 0:
+            tmp = input_list[lo_end]
+            input_list[lo_end] = input_list[mid]
+            input_list[mid] = tmp
+            lo_end += 1
+            mid += 1
+            
+        elif input_list[mid] == 1:
+            mid += 1            
         else:
-            lst_2.append(2)
-        
-    output += lst_0
-    output += lst_1
-    output += lst_2
+            tmp = input_list[mid]
+            input_list[mid] = input_list[hi_end]
+            input_list[hi_end] = tmp
+            hi_end -= 1
 
-    return output
+    return input_list            
 
 # Run some tests
 def test_function(test_case):
-    sorted_array = sort_012(test_case)
+    sorted_array = sort_zero_one_two(test_case)
     print(sorted_array)
     if sorted_array == sorted(test_case):
         print("Pass")
@@ -36,56 +42,5 @@ test_function([0, 0, 2, 2, 2, 1, 1, 1, 2, 0, 2])
 test_function([2, 1, 2, 0, 0, 2, 1, 0, 1, 0, 0, 2, 2, 2, 1, 2, 0, 0, 0, 2, 1, 0, 2, 0, 0, 1])
 test_function([0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2])
 test_function([1, 0, 2, 0, 1, 0, 2, 1, 0, 2, 2])
-
-
-"""
-# Problem 4: Dutch National Flag Problem
-​
-def sort_012(input_list):
-    # Handle edge cases
-    if input_list is None:
-        return "The list is either empty or invalid."
-    lst_0 = []
-    lst_1 = []
-    lst_2 = []
-    output = []
-    for element in input_list:
-        
-        if element == 0:
-            lst_0.append(0)
-        elif element == 1:
-            lst_1.append(1)
-        else:
-            lst_2.append(2)
-        
-    output += lst_0
-    output += lst_1
-    output += lst_2
-​
-    return output
-REQUIRED
-Please kindly optimize your code in terms of the space required to make it a constant space solution.
-Hint: You can check out the "Dutch National Flag" Algorithm here for some insights into this.
-
-​
-# Run some tests
-def test_function(test_case):
-    sorted_array = sort_012(test_case)
-    print(sorted_array)
-    if sorted_array == sorted(test_case):
-        print("Pass")
-    else:
-        print("Fail")
-​
-test_function([0, 0, 2, 2, 2, 1, 1, 1, 2, 0, 2])
-test_function([2, 1, 2, 0, 0, 2, 1, 0, 1, 0, 0, 2, 2, 2, 1, 2, 0, 0, 0, 2, 1, 0, 2, 0, 0, 1])
-AWESOME
-I really appreciate that you have stuck with the specifications of specifically using the array of 0s, 1s, and 2s in the input array, this really shows your careful detailing regarding the problem statement and corresponding solutions.
-
-Well done!
-
-test_function([0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2])
-test_function([1, 0, 2, 0, 1, 0, 2, 1, 0, 2, 2])
-REQUIRED
-Please kindly provide at least two edge cases here like the empty array case to meet all the requirements.
-"""
+test_function([])
+test_function([-1])
