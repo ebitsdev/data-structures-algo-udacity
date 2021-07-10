@@ -5,5 +5,5 @@ To solve this problem, we need to split the provided list in 3 separate sub-list
 Once that is done, we merge the tree lists into a single list.
 
 The time complexity is O(n).
-The algorithm does not take more space than necessary in its current implementation.
+The algorithm does not take more memory space than necessary in its current implementation.
 The space complexity is O(1).
