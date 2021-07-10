@@ -1,8 +1,7 @@
 # Problem 4: Dutch National Flag Problem
 
 def sort_zero_one_two(input_list):
-    # We define 3 variables for 0, 1, and 2
-    # We also define 1 more variable to represent the end of the array
+    # We define 4 variables for the low, middle, high, and temporary values
     lo_end = 0
     hi_end = len(input_list) - 1
     mid = 0
